@@ -1,0 +1,26 @@
+This plugin makes it easy to add Seam Reports and its dependencies to your project.
+
+To install, run: 
+
+forge git-plugin git://github.com/forge/plugin-seam-reports.git
+
+To configure Seam Reports to work with Pentaho Reporting Engine: 
+
+seam-reports setup --provider PENTAHO
+
+To configure Seam Reports to work with JasperReports: 
+
+seam-reports setup --provider JASPERREPORTS
+
+To configure Seam Reports to work with BIRT: 
+
+seam-reports setup --provider BIRT
+
+To add only the api: 
+
+seam-reports setup
+
+
+
+
+
