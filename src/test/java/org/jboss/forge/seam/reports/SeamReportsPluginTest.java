@@ -1,5 +1,6 @@
 package org.jboss.forge.seam.reports;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -14,6 +15,17 @@ import org.junit.Test;
 
 public class SeamReportsPluginTest extends AbstractShellTest {
 
+    @Test
+    public void testNoParameters() throws IOException {
+        Project project = initializeJavaProject();
+        // Execute SUT
+        getShell().execute("seam-reports");
+        DependencyFacet facet = project.getFacet(DependencyFacet.class);
+        boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
+        assertFalse("Seam Reports dependency missing", actual);
+    }
+
+    
     @Test
     public void testSetupAPI() throws IOException {
         Project project = initializeJavaProject();

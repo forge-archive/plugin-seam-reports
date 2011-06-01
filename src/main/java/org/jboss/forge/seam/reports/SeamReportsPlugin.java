@@ -12,7 +12,9 @@ import org.jboss.forge.project.facets.DependencyFacet;
 import org.jboss.forge.shell.ShellPrompt;
 import org.jboss.forge.shell.plugins.Alias;
 import org.jboss.forge.shell.plugins.Command;
+import org.jboss.forge.shell.plugins.DefaultCommand;
 import org.jboss.forge.shell.plugins.Option;
+import org.jboss.forge.shell.plugins.PipeOut;
 import org.jboss.forge.shell.plugins.Plugin;
 import org.jboss.forge.shell.plugins.RequiresFacet;
 
@@ -25,6 +27,13 @@ public class SeamReportsPlugin implements Plugin {
     @Inject
     ShellPrompt prompt;
 
+    @DefaultCommand
+    public void help(PipeOut out) {
+        out.println("The following parameters are available:");
+        out.println(" setup --provider [BIRT,JASPERREPORTS,PENTAHO]");
+    }
+    
+    
     @Command(value = "setup")
     public void setup(@Option(name = "provider", completer = ProvidersTokenCompleter.class) String provider) {
         DependencyFacet dependencyFacet = project.getFacet(DependencyFacet.class);
