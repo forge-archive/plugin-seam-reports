@@ -13,68 +13,80 @@ import org.jboss.forge.test.AbstractShellTest;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
 
-public class SeamReportsPluginTest extends AbstractShellTest {
+/**
+ * {@link SeamReportsPlugin} test case
+ * 
+ * @author George Gastaldi (gastaldi)
+ */
+public class SeamReportsPluginTest extends AbstractShellTest
+{
 
-    @Test
-    public void testNoParameters() throws IOException {
-        Project project = initializeJavaProject();
-        // Execute SUT
-        getShell().execute("seam-reports");
-        DependencyFacet facet = project.getFacet(DependencyFacet.class);
-        boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
-        assertFalse("Seam Reports dependency missing", actual);
-    }
+   @Test
+   public void testNoParameters() throws IOException
+   {
+      Project project = initializeJavaProject();
+      // Execute SUT
+      getShell().execute("seam-reports");
+      DependencyFacet facet = project.getFacet(DependencyFacet.class);
+      boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
+      assertFalse("Seam Reports dependency missing", actual);
+   }
 
-    
-    @Test
-    public void testSetupAPI() throws IOException {
-        Project project = initializeJavaProject();
-        // Execute SUT
-        getShell().execute("seam-reports setup");
-        DependencyFacet facet = project.getFacet(DependencyFacet.class);
-        boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
-        assertTrue("Seam Reports dependency missing", actual);
-    }
+   @Test
+   public void testSetupAPI() throws IOException
+   {
+      Project project = initializeJavaProject();
+      // Execute SUT
+      getShell().execute("seam-reports setup");
+      DependencyFacet facet = project.getFacet(DependencyFacet.class);
+      boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
+      assertTrue("Seam Reports dependency missing", actual);
+   }
 
-    @Test
-    public void testSetupJasperReports() throws IOException {
-        Project project = initializeJavaProject();
-        // Execute SUT
-        getShell().execute("seam-reports setup --provider JASPERREPORTS");
-        DependencyFacet facet = project.getFacet(DependencyFacet.class);
-        boolean api = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
-        assertTrue("Seam Reports API dependency missing", api);
-        boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-jasperreports"));
-        assertTrue("Seam Reports dependency missing", actual);
-    }
+   @Test
+   public void testSetupJasperReports() throws IOException
+   {
+      Project project = initializeJavaProject();
+      // Execute SUT
+      getShell().execute("seam-reports setup --provider JASPERREPORTS");
+      DependencyFacet facet = project.getFacet(DependencyFacet.class);
+      boolean api = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
+      assertTrue("Seam Reports API dependency missing", api);
+      boolean actual = facet.hasDependency(DependencyBuilder
+               .create("org.jboss.seam.reports:seam-reports-jasperreports"));
+      assertTrue("Seam Reports dependency missing", actual);
+   }
 
-    @Test
-    public void testSetupPentahoReporting() throws IOException {
-        Project project = initializeJavaProject();
-        // Execute SUT
-        getShell().execute("seam-reports setup --provider PENTAHO");
-        DependencyFacet facet = project.getFacet(DependencyFacet.class);
-        boolean api = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
-        assertTrue("Seam Reports API dependency missing", api);
-        boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-pentaho"));
-        assertTrue("Seam Reports dependency missing", actual);
-    }
+   @Test
+   public void testSetupPentahoReporting() throws IOException
+   {
+      Project project = initializeJavaProject();
+      // Execute SUT
+      getShell().execute("seam-reports setup --provider PENTAHO");
+      DependencyFacet facet = project.getFacet(DependencyFacet.class);
+      boolean api = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
+      assertTrue("Seam Reports API dependency missing", api);
+      boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-pentaho"));
+      assertTrue("Seam Reports dependency missing", actual);
+   }
 
-    @Test
-    public void testSetupBirt() throws IOException {
-        Project project = initializeJavaProject();
-        // Execute SUT
-        getShell().execute("seam-reports setup --provider BIRT");
-        DependencyFacet facet = project.getFacet(DependencyFacet.class);
-        boolean api = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
-        assertTrue("Seam Reports API dependency missing", api);
-        boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-birt"));
-        assertTrue("Seam Reports dependency missing", actual);
-    }
+   @Test
+   public void testSetupBirt() throws IOException
+   {
+      Project project = initializeJavaProject();
+      // Execute SUT
+      getShell().execute("seam-reports setup --provider BIRT");
+      DependencyFacet facet = project.getFacet(DependencyFacet.class);
+      boolean api = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
+      assertTrue("Seam Reports API dependency missing", api);
+      boolean actual = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-birt"));
+      assertTrue("Seam Reports dependency missing", actual);
+   }
 
-    @Deployment
-    public static JavaArchive getDeployment() {
-        return AbstractShellTest.getDeployment().addPackages(true, SeamReportsPlugin.class.getPackage());
-    }
+   @Deployment
+   public static JavaArchive getDeployment()
+   {
+      return AbstractShellTest.getDeployment().addPackages(true, SeamReportsPlugin.class.getPackage());
+   }
 
 }
