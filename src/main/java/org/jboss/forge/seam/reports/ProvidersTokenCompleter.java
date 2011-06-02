@@ -13,9 +13,8 @@ import org.jboss.forge.shell.completer.SimpleTokenCompleter;
 public class ProvidersTokenCompleter extends SimpleTokenCompleter
 {
 
-   @SuppressWarnings({ "unchecked", "rawtypes" })
    @Override
-   public List getCompletionTokens()
+   public List<String> getCompletionTokens()
    {
       return Arrays.asList("JASPERREPORTS", "BIRT", "PENTAHO");
    }
