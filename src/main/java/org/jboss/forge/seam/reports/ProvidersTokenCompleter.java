@@ -16,7 +16,7 @@ public class ProvidersTokenCompleter extends SimpleTokenCompleter
    @Override
    public List<String> getCompletionTokens()
    {
-      return Arrays.asList("JASPERREPORTS", "BIRT", "PENTAHO");
+      return Arrays.asList("JASPERREPORTS", "PENTAHO");
    }
 
 }

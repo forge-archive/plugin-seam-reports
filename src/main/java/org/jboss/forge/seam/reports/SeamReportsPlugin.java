@@ -22,7 +22,7 @@ import org.jboss.forge.shell.plugins.RequiresFacet;
  * Seam Reports Forge Plugin
  * 
  * @author George Gastaldi (gastaldi)
- *
+ * 
  */
 @Alias("seam-reports")
 @RequiresFacet({ DependencyFacet.class })
@@ -62,11 +62,11 @@ public class SeamReportsPlugin implements Plugin
          dependencyFacet.setProperty("seam.reports.version", choosenVersion.getVersion());
 
          dependencyFacet.addDependency(seamReportsDependency.setVersion("${seam.reports.version}"));
-         if (StringUtils.isNotBlank(provider))
-         {
-            dependencyFacet.addDependency(DependencyBuilder.create().setGroupId("org.jboss.seam.reports")
-                        .setArtifactId("seam-reports-" + provider.toLowerCase()).setVersion("${seam.reports.version}"));
-         }
+      }
+      if (StringUtils.isNotBlank(provider))
+      {
+         dependencyFacet.addDependency(DependencyBuilder.create().setGroupId("org.jboss.seam.reports")
+                     .setArtifactId("seam-reports-" + provider.toLowerCase()).setVersion("${seam.reports.version}"));
       }
    }
 
