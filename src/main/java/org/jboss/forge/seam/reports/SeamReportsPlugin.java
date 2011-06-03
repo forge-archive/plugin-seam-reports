@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.codehaus.plexus.util.StringUtils;
 import org.jboss.forge.project.Project;
 import org.jboss.forge.project.dependencies.Dependency;
 import org.jboss.forge.project.dependencies.DependencyBuilder;
@@ -38,11 +37,11 @@ public class SeamReportsPlugin implements Plugin
    public void help(PipeOut out)
    {
       out.println("The following parameters are available:");
-      out.println(" setup --provider [BIRT,JASPERREPORTS,PENTAHO]");
+      out.println(" setup --provider [JASPERREPORTS,PENTAHO]");
    }
 
    @Command(value = "setup")
-   public void setup(@Option(name = "provider", completer = ProvidersTokenCompleter.class) String provider)
+   public void setup(@Option(name = "provider") Provider provider)
    {
       DependencyFacet dependencyFacet = project.getFacet(DependencyFacet.class);
       DependencyBuilder seamReportsDependency = DependencyBuilder.create().setGroupId("org.jboss.seam.reports")
@@ -63,11 +62,16 @@ public class SeamReportsPlugin implements Plugin
 
          dependencyFacet.addDependency(seamReportsDependency.setVersion("${seam.reports.version}"));
       }
-      if (StringUtils.isNotBlank(provider))
+      if (provider != null)
       {
          dependencyFacet.addDependency(DependencyBuilder.create().setGroupId("org.jboss.seam.reports")
-                     .setArtifactId("seam-reports-" + provider.toLowerCase()).setVersion("${seam.reports.version}"));
+                     .setArtifactId("seam-reports-" + provider.name().toLowerCase())
+                  .setVersion("${seam.reports.version}"));
       }
    }
 
+   public static enum Provider
+   {
+      JASPERREPORTS, PENTAHO;
+   }
 }
