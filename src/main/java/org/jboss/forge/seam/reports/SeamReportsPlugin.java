@@ -1,5 +1,6 @@
 package org.jboss.forge.seam.reports;
 
+import java.util.EnumSet;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,7 +38,7 @@ public class SeamReportsPlugin implements Plugin
    public void help(PipeOut out)
    {
       out.println("The following parameters are available:");
-      out.println(" setup --provider [JASPERREPORTS,PENTAHO]");
+      out.println(" setup --provider " + EnumSet.allOf(Provider.class));
    }
 
    @Command(value = "setup")
