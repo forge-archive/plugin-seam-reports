@@ -11,6 +11,7 @@ import org.jboss.forge.project.dependencies.DependencyBuilder;
 import org.jboss.forge.project.facets.DependencyFacet;
 import org.jboss.forge.test.AbstractShellTest;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -48,12 +49,12 @@ public class SeamReportsPluginTest extends AbstractShellTest
    {
       Project project = initializeJavaProject();
       // Execute SUT
-      getShell().execute("seam-reports setup --provider JASPERREPORTS");
+      getShell().execute("seam-reports setup --provider JASPER");
       DependencyFacet facet = project.getFacet(DependencyFacet.class);
       boolean api = facet.hasDependency(DependencyBuilder.create("org.jboss.seam.reports:seam-reports-api"));
       assertTrue("Seam Reports API dependency missing", api);
       boolean actual = facet.hasDependency(DependencyBuilder
-               .create("org.jboss.seam.reports:seam-reports-jasperreports"));
+               .create("org.jboss.seam.reports:seam-reports-jasper"));
       assertTrue("Seam Reports dependency missing", actual);
    }
 
@@ -70,6 +71,7 @@ public class SeamReportsPluginTest extends AbstractShellTest
       assertTrue("Seam Reports dependency missing", actual);
    }
 
+   @Ignore
    @Test
    public void testSetupBirt() throws IOException
    {

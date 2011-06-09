@@ -6,6 +6,7 @@
 	<groupId>org.jboss.forge.seam.reports</groupId>
 	<artifactId>plugin-seam-reports</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
+	<name>Seam Reports Forge Plugin</name>
 	<properties>
 		<forge.api.version>1.0.0-SNAPSHOT</forge.api.version>
 		<arquillian.version>1.0.0.Alpha5</arquillian.version>

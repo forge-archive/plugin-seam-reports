@@ -73,6 +73,6 @@ public class SeamReportsPlugin implements Plugin
 
    public static enum Provider
    {
-      JASPERREPORTS, PENTAHO;
+      JASPER, PENTAHO;
    }
 }
