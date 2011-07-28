@@ -46,7 +46,7 @@ public class SeamReportsPlugin implements Plugin
    {
       DependencyFacet dependencyFacet = project.getFacet(DependencyFacet.class);
       DependencyBuilder seamReportsDependency = DependencyBuilder.create().setGroupId("org.jboss.seam.reports")
-                .setArtifactId("seam-reports-api");
+               .setArtifactId("seam-reports-api");
 
       if (!dependencyFacet.hasDependency(seamReportsDependency))
       {
@@ -58,7 +58,7 @@ public class SeamReportsPlugin implements Plugin
          List<Dependency> versions = dependencyFacet.resolveAvailableVersions(seamReportsDependency);
 
          Dependency choosenVersion = prompt.promptChoiceTyped("Which version of Seam Reports do you want to install?",
-                    versions, versions.get(versions.size() - 1));
+                  versions, versions.get(versions.size() - 1));
          dependencyFacet.setProperty("seam.reports.version", choosenVersion.getVersion());
 
          dependencyFacet.addDependency(seamReportsDependency.setVersion("${seam.reports.version}"));
@@ -66,13 +66,13 @@ public class SeamReportsPlugin implements Plugin
       if (provider != null)
       {
          dependencyFacet.addDependency(DependencyBuilder.create().setGroupId("org.jboss.seam.reports")
-                     .setArtifactId("seam-reports-" + provider.name().toLowerCase())
+                  .setArtifactId("seam-reports-" + provider.name().toLowerCase())
                   .setVersion("${seam.reports.version}"));
       }
    }
 
    public static enum Provider
    {
-      JASPER, PENTAHO;
+      JASPER, PENTAHO, XDOCREPORT;
    }
 }
