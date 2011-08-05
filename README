@@ -12,9 +12,9 @@ To configure Seam Reports to work with JasperReports:
 
 seam-reports setup --provider JASPERREPORTS
 
-To configure Seam Reports to work with BIRT: 
+To configure Seam Reports to work with XDOCREPORT: 
 
-seam-reports setup --provider BIRT
+seam-reports setup --provider XDOCREPORT
 
 To add only the api: 
 
