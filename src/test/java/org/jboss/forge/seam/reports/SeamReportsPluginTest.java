@@ -37,6 +37,7 @@ public class SeamReportsPluginTest extends AbstractShellTest
    public void testSetupAPI() throws IOException
    {
       Project project = initializeJavaProject();
+      queueInputLines("");
       // Execute SUT
       getShell().execute("seam-reports setup");
       DependencyFacet facet = project.getFacet(DependencyFacet.class);
@@ -48,6 +49,7 @@ public class SeamReportsPluginTest extends AbstractShellTest
    public void testSetupJasperReports() throws IOException
    {
       Project project = initializeJavaProject();
+      queueInputLines("");
       // Execute SUT
       getShell().execute("seam-reports setup --provider JASPER");
       DependencyFacet facet = project.getFacet(DependencyFacet.class);
@@ -62,6 +64,7 @@ public class SeamReportsPluginTest extends AbstractShellTest
    public void testSetupPentahoReporting() throws IOException
    {
       Project project = initializeJavaProject();
+      queueInputLines("");
       // Execute SUT
       getShell().execute("seam-reports setup --provider PENTAHO");
       DependencyFacet facet = project.getFacet(DependencyFacet.class);
@@ -76,6 +79,7 @@ public class SeamReportsPluginTest extends AbstractShellTest
    public void testSetupBirt() throws IOException
    {
       Project project = initializeJavaProject();
+      queueInputLines("");
       // Execute SUT
       getShell().execute("seam-reports setup --provider BIRT");
       DependencyFacet facet = project.getFacet(DependencyFacet.class);
