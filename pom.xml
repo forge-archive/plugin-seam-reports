@@ -8,8 +8,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Seam Reports Forge Plugin</name>
 	<properties>
-		<forge.api.version>1.0.0-SNAPSHOT</forge.api.version>
-		<arquillian.version>1.0.0.Alpha5</arquillian.version>
+		<forge.api.version>1.0.0.Final</forge.api.version>
 		<el-api.version>2.2</el-api.version>
 	</properties>
 	<dependencies>
