@@ -48,7 +48,7 @@ public class SeamReportsPlugin implements Plugin
       DependencyBuilder seamReportsDependency = DependencyBuilder.create().setGroupId("org.jboss.seam.reports")
                .setArtifactId("seam-reports-api");
 
-      if (!dependencyFacet.hasDependency(seamReportsDependency))
+      if (!dependencyFacet.hasDirectDependency(seamReportsDependency))
       {
          if (!dependencyFacet.hasRepository(DependencyFacet.KnownRepository.JBOSS_NEXUS))
          {
@@ -61,11 +61,11 @@ public class SeamReportsPlugin implements Plugin
                   versions, versions.get(versions.size() - 1));
          dependencyFacet.setProperty("seam.reports.version", choosenVersion.getVersion());
 
-         dependencyFacet.addDependency(seamReportsDependency.setVersion("${seam.reports.version}"));
+         dependencyFacet.addDirectDependency(seamReportsDependency.setVersion("${seam.reports.version}"));
       }
       if (provider != null)
       {
-         dependencyFacet.addDependency(DependencyBuilder.create().setGroupId("org.jboss.seam.reports")
+         dependencyFacet.addDirectDependency(DependencyBuilder.create().setGroupId("org.jboss.seam.reports")
                   .setArtifactId("seam-reports-" + provider.name().toLowerCase())
                   .setVersion("${seam.reports.version}"));
       }
